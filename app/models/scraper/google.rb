@@ -36,7 +36,7 @@ module Scraper
     def sanitize_target_link(link)
       plain_link = link['href'].sub(/^\/url\?q\=/, '').sub('/&', '?')
       plain_link.sub!('&', '?') unless plain_link.include?('?')
-      parsed_link = Addressable::URI.parse('https://github.com?sa=U&ved=2ahUKEwjB6P7N1fDxAhUnp5UCHbF5AewQFjAAegQIBxAB&usg=AOvVaw1FdnK6Ys4Qu8s6ZXLOEk8c')
+      parsed_link = Addressable::URI.parse(plain_link)
 
       parsed_link.query_values = parsed_link.query_values&.except('sa', 'usg', 'ved').presence
       parsed_link

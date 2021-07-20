@@ -2,7 +2,7 @@
 
 <%= form_tag(search_path, method: :get) do %>
   <%= text_field_tag(:text, params[:text]) %>
-  <%= select_tag(:engine, options_for_select([ "google", "bing", "both" ], params[:engine] || 'google')) %>
+  <%= select_tag(:engine, options_for_select(Scraper::Search::ENGINES.keys, params[:engine] || 'google')) %>
   <%= submit_tag('Search') %>
 <% end %>
 
