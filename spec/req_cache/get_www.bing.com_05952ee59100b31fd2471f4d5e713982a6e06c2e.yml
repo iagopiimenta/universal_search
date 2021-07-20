@@ -12,7 +12,7 @@
   ETag: '0x8D8BDA19919E5FC'
   X-Cache: TCP_HIT
   Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
-  x-ms-request-id: 9a29aaf0-801e-0016-75da-7ca4b0000000
+  x-ms-request-id: e378312a-e01e-00e8-45b8-7c98d5000000
   x-ms-version: '2009-09-19'
   x-ms-lease-status: unlocked
   x-ms-blob-type: BlockBlob
@@ -21,9 +21,9 @@
   cross-origin-resource-policy: cross-origin
   nel: '{"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1.0}'
   report-to: '{"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingaot"}]}'
-  X-MSEdge-Ref: 'Ref A: FC1E78466ABD4010AA7A64A6A21DE682 Ref B: SAO03EDGE0212 Ref
-    C: 2021-07-20T03:00:24Z'
-  Date: Tue, 20 Jul 2021 03:00:24 GMT
+  X-MSEdge-Ref: 'Ref A: FAE6915FCF3043D286AF9F44B70D96DF Ref B: SAO03EDGE0818 Ref
+    C: 2021-07-20T03:14:35Z'
+  Date: Tue, 20 Jul 2021 03:14:34 GMT
   Connection: close
 :content: (function(){function u(){n&&(n.value.length>0?Lib.CssClass.add(sj_b,t):Lib.CssClass.remove(sj_b,t))}function
   f(r){n.value="";Lib.CssClass.remove(sj_b,t);sj_log("CI.XButton","Clicked","1");i&&Lib.CssClass.add(i,"b_focus");n.focus();n.click();r&&(r.preventDefault(),r.stopPropagation())}var

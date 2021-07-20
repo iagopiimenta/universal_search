@@ -1,0 +1,14 @@
+---
+:scope:
+:url: https://www.bing.com/fd/ls/lsp.aspx?
+:body: <ClientInstRequest><Events><E><T>Event.ClientInst</T><IG>19420F91FCDC46D59072E88A21B2ED4F</IG><TS>1626750874090</TS><D><![CDATA[{id:6591,P:"2:ht,3:ht,4:ht,5:hu,7:kk,6:kc,8:kk,9:ze,10:zg,11:zl,12:1gr,13:1gr,14:1gr,15:1u7,16:1u7,17:1u8",S:"nav:0",v:1.1,T:"CI.Perf",FID:"CI",Name:"PerfV2"}]]></D></E></Events><STS>1626750874090</STS></ClientInstRequest>
+:status: 204
+:method: post
+:headers:
+  Access-Control-Allow-Origin: "*"
+  X-Cache: CONFIG_NOCACHE
+  X-MSEdge-Ref: 'Ref A: F332E3F5CA784DFF9D7FBCB6535B42B3 Ref B: SAO03EDGE0421 Ref
+    C: 2021-07-20T03:14:36Z'
+  Date: Tue, 20 Jul 2021 03:14:36 GMT
+  Connection: close
+:content: ''

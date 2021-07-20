@@ -9,21 +9,21 @@
   Content-Length: '16338'
   Content-Type: text/javascript; charset=utf-8
   Last-Modified: Sat, 19 Jun 2021 23:25:54 GMT
-  Etag: '0x8D93379959E47A7'
+  ETag: '0x8D93379959E47A7'
   X-Cache: TCP_HIT
   Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
-  X-Ms-Request-Id: e1c80ce7-901e-00ce-20da-7c0361000000
-  X-Ms-Version: '2009-09-19'
-  X-Ms-Lease-Status: unlocked
-  X-Ms-Blob-Type: BlockBlob
+  x-ms-request-id: 97619b3e-301e-008c-6ae2-7c2875000000
+  x-ms-version: '2009-09-19'
+  x-ms-lease-status: unlocked
+  x-ms-blob-type: BlockBlob
   Access-Control-Allow-Origin: "*"
-  Timing-Allow-Origin: "*"
-  Cross-Origin-Resource-Policy: cross-origin
-  Nel: '{"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1.0}'
-  Report-To: '{"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingaot"}]}'
-  X-Msedge-Ref: 'Ref A: 10B7F81D73474E5C87976ADC01C7CBE7 Ref B: SAO03EDGE0212 Ref
-    C: 2021-07-20T02:59:08Z'
-  Date: Tue, 20 Jul 2021 02:59:07 GMT
+  timing-allow-origin: "*"
+  cross-origin-resource-policy: cross-origin
+  nel: '{"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1.0}'
+  report-to: '{"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingaot"}]}'
+  X-MSEdge-Ref: 'Ref A: 48D37011D1AA4DCABDEB643F786D8936 Ref B: SAO03EDGE0619 Ref
+    C: 2021-07-20T03:14:34Z'
+  Date: Tue, 20 Jul 2021 03:14:34 GMT
   Connection: close
 :content: var customEvents,__spreadArrays,fallbackReplay,EventLoggingModule;_w.EventsToDuplicate=[];_w.useSharedLocalStorage=!1;define("shared",["require","exports"],function(n,t){function
   s(n,t){for(var r=n.length,i=0;i<r;i++)t(n[i])}function r(n){for(var i=[],t=1;t<arguments.length;t++)i[t-1]=arguments[t];return

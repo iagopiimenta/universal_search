@@ -21,9 +21,9 @@
   cross-origin-resource-policy: cross-origin
   nel: '{"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1.0}'
   report-to: '{"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingaot"}]}'
-  X-MSEdge-Ref: 'Ref A: DAC2AA22BB7F4010B98B07462FFAEC70 Ref B: SAO03EDGE0318 Ref
-    C: 2021-07-20T03:00:24Z'
-  Date: Tue, 20 Jul 2021 03:00:23 GMT
+  X-MSEdge-Ref: 'Ref A: 1B0B0F3EE5E840688C4AF265BD181D9D Ref B: SAO03EDGE0310 Ref
+    C: 2021-07-20T03:14:35Z'
+  Date: Tue, 20 Jul 2021 03:14:34 GMT
   Connection: close
 :content: "0;\r\n;\r\n!function(n,l){\"object\"==typeof exports&&\"undefined\"!=typeof
   module?l(exports):\"function\"==typeof define&&define.amd?define([\"exports\"],l):l(n.preact={})}(this,function(n){var

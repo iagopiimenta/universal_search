@@ -1,0 +1,15 @@
+---
+:scope:
+:url: https://www.bing.com/fd/ls/l?IG=19420F91FCDC46D59072E88A21B2ED4F&Type=Event.ClientInst&DATA=[{%22T%22:%22CI.BM%22,%22FID%22:%22CI%22,%22Name%22:%22HV%22}]
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Allow-Origin: "*"
+  X-Cache: CONFIG_NOCACHE
+  X-MSEdge-Ref: 'Ref A: CE035E0FA14E4F1387A2135406B684EC Ref B: SAO03EDGE0316 Ref
+    C: 2021-07-20T03:14:34Z'
+  Date: Tue, 20 Jul 2021 03:14:34 GMT
+  Connection: close
+  Content-Length: '0'
+:content: ''
