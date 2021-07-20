@@ -53,6 +53,7 @@ group :test do
   gem 'webdrivers'
 
   gem 'puffing-billy'
+  gem 'rails-controller-testing'
   gem 'simplecov', '< 0.18', require: false
   gem 'vcr'
   gem 'webmock'

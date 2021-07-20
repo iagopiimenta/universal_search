@@ -13,7 +13,7 @@ module Scraper
       @driver = @browser.driver.browser
     end
 
-    def search(query)
+    def search(query) # rubocop:disable Metrics/MethodLength
       html = fetch_papge(query)
 
       html.css('#b_results > .b_algo').map do |entry|
@@ -23,7 +23,8 @@ module Scraper
         Record.new(
           title: entry.css('h2').text,
           description: entry.css('.b_caption p').text,
-          link: link['href']
+          link: link['href'],
+          engine: self.class
         )
       end.compact
     end
