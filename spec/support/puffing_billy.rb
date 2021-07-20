@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'billy/capybara/rspec'
 
 Billy.configure do |c|

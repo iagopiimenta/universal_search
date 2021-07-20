@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Capybara.run_server = false
 Capybara.javascript_driver = :selenium_chrome_headless
 Capybara.configure do |config|

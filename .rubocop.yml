@@ -1,0 +1,13 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  NewCops: enable
+
+RSpec/MultipleExpectations:
+  Enabled: false
+Rails/FilePath:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
