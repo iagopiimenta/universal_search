@@ -1,0 +1,32 @@
+---
+:scope:
+:url: https://www.bing.com/rp/9n2g4zAWh8k5vtdrqf4lx1azOQE.js
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Cache-Control: public, max-age=432000
+  Content-Length: '744'
+  Content-Type: application/x-javascript; charset=utf-8
+  Last-Modified: Thu, 28 Jan 2021 01:06:38 GMT
+  ETag: '0x8D8C328F6EA6CDE'
+  X-Cache: TCP_HIT
+  Server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+  x-ms-request-id: 64e21e3d-b01e-009d-0dda-7c1f6e000000
+  x-ms-version: '2009-09-19'
+  x-ms-lease-status: unlocked
+  x-ms-blob-type: BlockBlob
+  Access-Control-Allow-Origin: "*"
+  timing-allow-origin: "*"
+  cross-origin-resource-policy: cross-origin
+  nel: '{"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1.0}'
+  report-to: '{"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingaot"}]}'
+  X-MSEdge-Ref: 'Ref A: 1D104CFC3AED4B5EA67995832A25F0D9 Ref B: SAO03EDGE0215 Ref
+    C: 2021-07-20T03:00:24Z'
+  Date: Tue, 20 Jul 2021 03:00:23 GMT
+  Connection: close
+:content: (function(){function i(){var f="data-load",u,i;if(n&&!n.hasAttribute(f))try{if(_d.body.appendChild(n),typeof
+  sj_gx=="function"){if(u=r.replace("%IG%",_G.IG).replace("%IID%",n.getAttribute("data-iid")).replace("%PARTNER%",n.getAttribute("data-ptn")).replace("%ENABLEP%",n.getAttribute("data-ep")),n.setAttribute(f,"1"),i=sj_gx(),!i)return
+  null;i.onreadystatechange=function(){typeof sj_appHTML=="function"&&4==i.readyState&&200==i.status&&sj_appHTML(n,i.responseText)};i.open("GET",t?SbiTst.at(u):u,!0);i.send(null)}}catch(e){}}function
+  u(){if(n){var r=n.getAttribute("data-evt");r&&!t?sj_evt.bind(r,i,!0):i()}}var r="/images/sbi?mmasync=1&ig=%IG%&iid=%IID%&ptn=%PARTNER%&ep=%ENABLEP%",n=_ge("sbicom_loader"),t=typeof
+  SbiTst!="undefined";u()})()

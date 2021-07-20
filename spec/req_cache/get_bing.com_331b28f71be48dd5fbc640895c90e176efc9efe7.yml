@@ -1,0 +1,26 @@
+---
+:scope:
+:url: https://bing.com/search?q=github
+:body: ''
+:status: 301
+:method: get
+:headers:
+  Cache-Control: private
+  Content-Length: '212'
+  Content-Type: text/html; charset=utf-8
+  Location: https://www.bing.com:443/search?q=github&toWww=1&redig=4910EBDF156F4DD688AFA311BD557A11
+  Set-Cookie:
+  - MUID=039F805CD4F264A10EB09026D5276547; domain=bing.com; expires=Sun, 14-Aug-2022
+    02:59:07 GMT; path=/; secure; SameSite=None
+  - MUIDB=039F805CD4F264A10EB09026D5276547; expires=Sun, 14-Aug-2022 02:59:07 GMT;
+    path=/; HttpOnly
+  - _EDGE_S=F=1&SID=0DDB942751B4641E3187845D5061653D; domain=bing.com; path=/; HttpOnly
+  - _EDGE_V=1; domain=bing.com; expires=Sun, 14-Aug-2022 02:59:07 GMT; path=/; HttpOnly
+  X-Snr-Routing: '1'
+  X-Cache: CONFIG_NOCACHE
+  X-Msedge-Ref: 'Ref A: 98A88D950B1A4BC0A0CFA25EF21BE6BF Ref B: SAO03EDGE0518 Ref
+    C: 2021-07-20T02:59:06Z'
+  Date: Tue, 20 Jul 2021 02:59:06 GMT
+  Connection: close
+:content: "<html><head><title>Object moved</title></head><body>\r\n<h2>Object moved
+  to <a href=\"https://www.bing.com:443/search?q=github&amp;toWww=1&amp;redig=4910EBDF156F4DD688AFA311BD557A11\">here</a>.</h2>\r\n</body></html>\r\n"

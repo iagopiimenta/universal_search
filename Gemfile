@@ -30,6 +30,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   gem 'rspec-rails', '~> 5.0.0'
+
+  gem "rubocop-rails", require: false
 end
 
 group :development do
@@ -45,13 +47,19 @@ end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
 
   gem 'simplecov', '< 0.18', require: false
+  gem 'webmock'
+  gem 'vcr'
+  gem 'puffing-billy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'addressable'
+gem 'capybara'
