@@ -1,0 +1,8 @@
+<p><%= search_results.size %> results found.</p>
+<% search_results.each do |record| %>
+  <div>
+    <h2><%= record.title %></h2>
+    <%= link_to record.link, record.link, target: '_blank' %>
+    <p><%= record.description %></p>
+  </div>
+<% end %>

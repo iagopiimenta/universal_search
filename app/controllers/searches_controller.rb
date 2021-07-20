@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
   def show
-    head :ok
+    @search_results = Scraper::Search.new.search(params[:engine], params[:text])
   end
 end

@@ -21,7 +21,10 @@ module Scraper
       parsed_link = sanitize_target_link(link)
 
       title = link.css('h3').text
+      title = title.valid_encoding? ? title : title.unpack("C*").pack("U*")
       description = link.parent.parent.children[2].text
+      # Fix latin characters
+      description = description.valid_encoding? ? description : description.unpack("C*").pack("U*")
 
       Record.new(
         title: title,

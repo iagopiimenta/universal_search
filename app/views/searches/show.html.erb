@@ -1,0 +1,9 @@
+<h1>Universal search demo</h1>
+
+<%= form_tag(search_path, method: :get) do %>
+  <%= text_field_tag(:text, params[:text]) %>
+  <%= select_tag(:engine, options_for_select([ "google", "bing", "both" ], params[:engine] || 'google')) %>
+  <%= submit_tag('Search') %>
+<% end %>
+
+<%= render partial: 'search_results', locals: { search_results: @search_results } if @search_results.present? %>
