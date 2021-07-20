@@ -1,0 +1,15 @@
+---
+:scope:
+:url: https://www.bing.com/fd/ls/l?IG=19420F91FCDC46D59072E88A21B2ED4F&Type=Event.CPT&DATA={%22pp%22:{%22S%22:%22L%22,%22FC%22:137,%22BC%22:137,%22SE%22:-1,%22TC%22:-1,%22H%22:264,%22BP%22:274,%22CT%22:275,%22IL%22:2},%22ad%22:[-1,-1,785,585,1084,1618,0],%22net%22:%22undefined%22}&P=SERP&DA=BN2B
+:body: ''
+:status: 200
+:method: get
+:headers:
+  Access-Control-Allow-Origin: "*"
+  X-Cache: CONFIG_NOCACHE
+  X-MSEdge-Ref: 'Ref A: 18E31F6448A144B0B08CD65F44720A0F Ref B: CPQ02EDGE0907 Ref
+    C: 2021-07-20T14:11:10Z'
+  Date: Tue, 20 Jul 2021 14:11:10 GMT
+  Connection: close
+  Content-Length: '0'
+:content: ''

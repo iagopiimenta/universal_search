@@ -2657,4 +2657,358 @@ http_interactions:
          */
         function lt(){try{var n=new Uint8Array(1);return n.__proto__={__proto__:Uint8Array.prototype,foo:function(){return 42}},n.foo()===42&&typeof n.subarray=="function"&&n.subarray(1,1).byteLength===0}catch(t){return!1}}function h(){return r.TYPED_ARRAY_SUPPORT?2147483647:1073741823}function e(n,t){if(h()<t)throw new RangeError("Invalid typed array length");return r.TYPED_ARRAY_SUPPORT?(n=new Uint8Array(t),n.__proto__=r.prototype):(n===null&&(n=new r(t)),n.length=t),n}function r(n,t,i){if(!r.TYPED_ARRAY_SUPPORT&&!(this instanceof r))return new r(n,t,i);if(typeof n=="number"){if(typeof t=="string")throw new Error("If encoding is specified then the first argument must be a string");return p(this,n)}return g(this,n,t,i)}function g(n,t,i,r){if(typeof t=="number")throw new TypeError('"value" argument must not be a number');return typeof ArrayBuffer!="undefined"&&t instanceof ArrayBuffer?yt(n,t,i,r):typeof t=="string"?vt(n,t,i):pt(n,t)}function nt(n){if(typeof n!="number")throw new TypeError('"size" argument must be a number');else if(n<0)throw new RangeError('"size" argument must not be negative');}function at(n,t,i,r){return(nt(t),t<=0)?e(n,t):i!==undefined?typeof r=="string"?e(n,t).fill(i,r):e(n,t).fill(i):e(n,t)}function p(n,t){if(nt(t),n=e(n,t<0?0:b(t)|0),!r.TYPED_ARRAY_SUPPORT)for(var i=0;i<t;++i)n[i]=0;return n}function vt(n,t,i){var u,f;if((typeof i!="string"||i==="")&&(i="utf8"),!r.isEncoding(i))throw new TypeError('"encoding" must be a valid string encoding');return u=tt(t,i)|0,n=e(n,u),f=n.write(t,i),f!==u&&(n=n.slice(0,f)),n}function w(n,t){var r=t.length<0?0:b(t.length)|0,i;for(n=e(n,r),i=0;i<r;i+=1)n[i]=t[i]&255;return n}function yt(n,t,i,u){if(t.byteLength,i<0||t.byteLength<i)throw new RangeError("'offset' is out of bounds");if(t.byteLength<i+(u||0))throw new RangeError("'length' is out of bounds");return t=i===undefined&&u===undefined?new Uint8Array(t):u===undefined?new Uint8Array(t,i):new Uint8Array(t,i,u),r.TYPED_ARRAY_SUPPORT?(n=t,n.__proto__=r.prototype):n=w(n,t),n}function pt(n,t){if(r.isBuffer(t)){var i=b(t.length)|0;return(n=e(n,i),n.length===0)?n:(t.copy(n,0,0,i),n)}if(t){if(typeof ArrayBuffer!="undefined"&&t.buffer instanceof ArrayBuffer||"length"in t)return typeof t.length!="number"||vi(t.length)?e(n,0):w(n,t);if(t.type==="Buffer"&&d(t.data))return w(n,t.data)}throw new TypeError("First argument must be a string, Buffer, ArrayBuffer, Array, or array-like object.");}function b(n){if(n>=h())throw new RangeError("Attempt to allocate Buffer larger than maximum size: 0x"+h().toString(16)+" bytes");return n|0}function wt(n){return+n!=n&&(n=0),r.alloc(+n)}function tt(n,t){var i,u;if(r.isBuffer(n))return n.length;if(typeof ArrayBuffer!="undefined"&&typeof ArrayBuffer.isView=="function"&&(ArrayBuffer.isView(n)||n instanceof ArrayBuffer))return n.byteLength;if(typeof n!="string"&&(n=""+n),i=n.length,i===0)return 0;for(u=!1;;)switch(t){case"ascii":case"latin1":case"binary":return i;case"utf8":case"utf-8":case undefined:return a(n).length;case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return i*2;case"hex":return i>>>1;case"base64":return ct(n).length;default:if(u)return a(n).length;t=(""+t).toLowerCase();u=!0}}function bt(n,t,i){var r=!1;if(((t===undefined||t<0)&&(t=0),t>this.length)||((i===undefined||i>this.length)&&(i=this.length),i<=0)||(i>>>=0,t>>>=0,i<=t))return"";for(n||(n="utf8");;)switch(n){case"hex":return ei(this,t,i);case"utf8":case"utf-8":return ft(this,t,i);case"ascii":return ui(this,t,i);case"latin1":case"binary":return fi(this,t,i);case"base64":return ii(this,t,i);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return oi(this,t,i);default:if(r)throw new TypeError("Unknown encoding: "+n);n=(n+"").toLowerCase();r=!0}}function o(n,t,i){var r=n[t];n[t]=n[i];n[i]=r}function it(n,t,i,u,f){if(n.length===0)return-1;if(typeof i=="string"?(u=i,i=0):i>2147483647?i=2147483647:i<-2147483648&&(i=-2147483648),i=+i,isNaN(i)&&(i=f?0:n.length-1),i<0&&(i=n.length+i),i>=n.length){if(f)return-1;i=n.length-1}else if(i<0)if(f)i=0;else return-1;if(typeof t=="string"&&(t=r.from(t,u)),r.isBuffer(t))return t.length===0?-1:rt(n,t,i,u,f);if(typeof t=="number")return(t=t&255,r.TYPED_ARRAY_SUPPORT&&typeof Uint8Array.prototype.indexOf=="function")?f?Uint8Array.prototype.indexOf.call(n,t,i):Uint8Array.prototype.lastIndexOf.call(n,t,i):rt(n,[t],i,u,f);throw new TypeError("val must be string, number or Buffer");}function rt(n,t,i,r,u){function l(n,t){return h===1?n[t]:n.readUInt16BE(t*h)}var h=1,c=n.length,o=t.length,f,e,a,s;if(r!==undefined&&(r=String(r).toLowerCase(),r==="ucs2"||r==="ucs-2"||r==="utf16le"||r==="utf-16le")){if(n.length<2||t.length<2)return-1;h=2;c/=2;o/=2;i/=2}if(u)for(e=-1,f=i;f<c;f++)if(l(n,f)===l(t,e===-1?0:f-e)){if(e===-1&&(e=f),f-e+1===o)return e*h}else e!==-1&&(f-=f-e),e=-1;else for(i+o>c&&(i=c-o),f=i;f>=0;f--){for(a=!0,s=0;s<o;s++)if(l(n,f+s)!==l(t,s)){a=!1;break}if(a)return f}return-1}function kt(n,t,i,r){var f,e,u,o;if(i=Number(i)||0,f=n.length-i,r?(r=Number(r),r>f&&(r=f)):r=f,e=t.length,e%2!=0)throw new TypeError("Invalid hex string");for(r>e/2&&(r=e/2),u=0;u<r;++u){if(o=parseInt(t.substr(u*2,2),16),isNaN(o))return u;n[i+u]=o}return u}function dt(n,t,i,r){return v(a(t,n.length-i),n,i,r)}function ut(n,t,i,r){return v(li(t),n,i,r)}function gt(n,t,i,r){return ut(n,t,i,r)}function ni(n,t,i,r){return v(ct(t),n,i,r)}function ti(n,t,i,r){return v(ai(t,n.length-i),n,i,r)}function ii(n,t,i){return t===0&&i===n.length?y.fromByteArray(n):y.fromByteArray(n.slice(t,i))}function ft(n,t,i){var h,f,e,s,l,u;for(i=Math.min(n.length,i),h=[],f=t;f<i;){var o=n[f],r=null,c=o>239?4:o>223?3:o>191?2:1;if(f+c<=i)switch(c){case 1:o<128&&(r=o);break;case 2:e=n[f+1];(e&192)==128&&(u=(o&31)<<6|e&63,u>127&&(r=u));break;case 3:e=n[f+1];s=n[f+2];(e&192)==128&&(s&192)==128&&(u=(o&15)<<12|(e&63)<<6|s&63,u>2047&&(u<55296||u>57343)&&(r=u));break;case 4:e=n[f+1];s=n[f+2];l=n[f+3];(e&192)==128&&(s&192)==128&&(l&192)==128&&(u=(o&15)<<18|(e&63)<<12|(s&63)<<6|l&63,u>65535&&u<1114112&&(r=u))}r===null?(r=65533,c=1):r>65535&&(r-=65536,h.push(r>>>10&1023|55296),r=56320|r&1023);h.push(r);f+=c}return ri(h)}function ri(n){var r=n.length,i,t;if(r<=k)return String.fromCharCode.apply(String,n);for(i="",t=0;t<r;)i+=String.fromCharCode.apply(String,n.slice(t,t+=k));return i}function ui(n,t,i){var u="",r;for(i=Math.min(n.length,i),r=t;r<i;++r)u+=String.fromCharCode(n[r]&127);return u}function fi(n,t,i){var u="",r;for(i=Math.min(n.length,i),r=t;r<i;++r)u+=String.fromCharCode(n[r]);return u}function ei(n,t,i){var f=n.length,u,r;for((!t||t<0)&&(t=0),(!i||i<0||i>f)&&(i=f),u="",r=t;r<i;++r)u+=ci(n[r]);return u}function oi(n,t,i){for(var u=n.slice(t,i),f="",r=0;r<u.length;r+=2)f+=String.fromCharCode(u[r]+u[r+1]*256);return f}function u(n,t,i){if(n%1!=0||n<0)throw new RangeError("offset is not uint");if(n+t>i)throw new RangeError("Trying to access beyond buffer length");}function f(n,t,i,u,f,e){if(!r.isBuffer(n))throw new TypeError('"buffer" argument must be a Buffer instance');if(t>f||t<e)throw new RangeError('"value" argument is out of bounds');if(i+u>n.length)throw new RangeError("Index out of range");}function c(n,t,i,r){t<0&&(t=65535+t+1);for(var u=0,f=Math.min(n.length-i,2);u<f;++u)n[i+u]=(t&255<<8*(r?u:1-u))>>>(r?u:1-u)*8}function l(n,t,i,r){t<0&&(t=4294967295+t+1);for(var u=0,f=Math.min(n.length-i,4);u<f;++u)n[i+u]=t>>>(r?u:3-u)*8&255}function et(n,t,i,r){if(i+r>n.length)throw new RangeError("Index out of range");if(i<0)throw new RangeError("Index out of range");}function ot(n,t,i,r,u){return u||et(n,t,i,4,34028234663852886e22,-34028234663852886e22),s.write(n,t,i,r,23,4),i+4}function st(n,t,i,r,u){return u||et(n,t,i,8,17976931348623157e292,-17976931348623157e292),s.write(n,t,i,r,52,8),i+8}function si(n){if(n=hi(n).replace(ht,""),n.length<2)return"";while(n.length%4!=0)n=n+"=";return n}function hi(n){return n.trim?n.trim():n.replace(/^\s+|\s+$/g,"")}function ci(n){return n<16?"0"+n.toString(16):n.toString(16)}function a(n,t){var f;t=t||Infinity;var i,e=n.length,u=null,r=[];for(f=0;f<e;++f){if(i=n.charCodeAt(f),i>55295&&i<57344){if(!u){if(i>56319){(t-=3)>-1&&r.push(239,191,189);continue}else if(f+1===e){(t-=3)>-1&&r.push(239,191,189);continue}u=i;continue}if(i<56320){(t-=3)>-1&&r.push(239,191,189);u=i;continue}i=(u-55296<<10|i-56320)+65536}else u&&(t-=3)>-1&&r.push(239,191,189);if(u=null,i<128){if((t-=1)<0)break;r.push(i)}else if(i<2048){if((t-=2)<0)break;r.push(i>>6|192,i&63|128)}else if(i<65536){if((t-=3)<0)break;r.push(i>>12|224,i>>6&63|128,i&63|128)}else if(i<1114112){if((t-=4)<0)break;r.push(i>>18|240,i>>12&63|128,i>>6&63|128,i&63|128)}else throw new Error("Invalid code point");}return r}function li(n){for(var i=[],t=0;t<n.length;++t)i.push(n.charCodeAt(t)&255);return i}function ai(n,t){for(var i,f,e,r=[],u=0;u<n.length;++u){if((t-=2)<0)break;i=n.charCodeAt(u);f=i>>8;e=i%256;r.push(e);r.push(f)}return r}function ct(n){return y.toByteArray(si(n))}function v(n,t,i,r){for(var u=0;u<r;++u){if(u+i>=t.length||u>=n.length)break;t[u+i]=n[u]}return u}function vi(n){return n!==n}var y=i(162),s=i(163),d=i(164),k,ht;t.Buffer=r;t.SlowBuffer=wt;t.INSPECT_MAX_BYTES=50;r.TYPED_ARRAY_SUPPORT=n.TYPED_ARRAY_SUPPORT!==undefined?n.TYPED_ARRAY_SUPPORT:lt();t.kMaxLength=h();r.poolSize=8192;r._augment=function(n){return n.__proto__=r.prototype,n};r.from=function(n,t,i){return g(null,n,t,i)};r.TYPED_ARRAY_SUPPORT&&(r.prototype.__proto__=Uint8Array.prototype,r.__proto__=Uint8Array,typeof Symbol!="undefined"&&Symbol.species&&r[Symbol.species]===r&&Object.defineProperty(r,Symbol.species,{value:null,configurable:!0}));r.alloc=function(n,t,i){return at(null,n,t,i)};r.allocUnsafe=function(n){return p(null,n)};r.allocUnsafeSlow=function(n){return p(null,n)};r.isBuffer=function(n){return!!(n!=null&&n._isBuffer)};r.compare=function(n,t){var u,f,i,e;if(!r.isBuffer(n)||!r.isBuffer(t))throw new TypeError("Arguments must be Buffers");if(n===t)return 0;for(u=n.length,f=t.length,i=0,e=Math.min(u,f);i<e;++i)if(n[i]!==t[i]){u=n[i];f=t[i];break}return u<f?-1:f<u?1:0};r.isEncoding=function(n){switch(String(n).toLowerCase()){case"hex":case"utf8":case"utf-8":case"ascii":case"latin1":case"binary":case"base64":case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return!0;default:return!1}};r.concat=function(n,t){var i,f,e,u;if(!d(n))throw new TypeError('"list" argument must be an Array of Buffers');if(n.length===0)return r.alloc(0);if(t===undefined)for(t=0,i=0;i<n.length;++i)t+=n[i].length;for(f=r.allocUnsafe(t),e=0,i=0;i<n.length;++i){if(u=n[i],!r.isBuffer(u))throw new TypeError('"list" argument must be an Array of Buffers');u.copy(f,e);e+=u.length}return f};r.byteLength=tt;r.prototype._isBuffer=!0;r.prototype.swap16=function(){var t=this.length,n;if(t%2!=0)throw new RangeError("Buffer size must be a multiple of 16-bits");for(n=0;n<t;n+=2)o(this,n,n+1);return this};r.prototype.swap32=function(){var t=this.length,n;if(t%4!=0)throw new RangeError("Buffer size must be a multiple of 32-bits");for(n=0;n<t;n+=4)o(this,n,n+3),o(this,n+1,n+2);return this};r.prototype.swap64=function(){var t=this.length,n;if(t%8!=0)throw new RangeError("Buffer size must be a multiple of 64-bits");for(n=0;n<t;n+=8)o(this,n,n+7),o(this,n+1,n+6),o(this,n+2,n+5),o(this,n+3,n+4);return this};r.prototype.toString=function(){var n=this.length|0;return n===0?"":arguments.length===0?ft(this,0,n):bt.apply(this,arguments)};r.prototype.equals=function(n){if(!r.isBuffer(n))throw new TypeError("Argument must be a Buffer");return this===n?!0:r.compare(this,n)===0};r.prototype.inspect=function(){var n="",i=t.INSPECT_MAX_BYTES;return this.length>0&&(n=this.toString("hex",0,i).match(/.{2}/g).join(" "),this.length>i&&(n+=" ... ")),"<Buffer "+n+">"};r.prototype.compare=function(n,t,i,u,f){var e;if(!r.isBuffer(n))throw new TypeError("Argument must be a Buffer");if(t===undefined&&(t=0),i===undefined&&(i=n?n.length:0),u===undefined&&(u=0),f===undefined&&(f=this.length),t<0||i>n.length||u<0||f>this.length)throw new RangeError("out of range index");if(u>=f&&t>=i)return 0;if(u>=f)return-1;if(t>=i)return 1;if(t>>>=0,i>>>=0,u>>>=0,f>>>=0,this===n)return 0;var o=f-u,s=i-t,l=Math.min(o,s),h=this.slice(u,f),c=n.slice(t,i);for(e=0;e<l;++e)if(h[e]!==c[e]){o=h[e];s=c[e];break}return o<s?-1:s<o?1:0};r.prototype.includes=function(n,t,i){return this.indexOf(n,t,i)!==-1};r.prototype.indexOf=function(n,t,i){return it(this,n,t,i,!0)};r.prototype.lastIndexOf=function(n,t,i){return it(this,n,t,i,!1)};r.prototype.write=function(n,t,i,r){var u,f;if(t===undefined)r="utf8",i=this.length,t=0;else if(i===undefined&&typeof t=="string")r=t,i=this.length,t=0;else if(isFinite(t))t=t|0,isFinite(i)?(i=i|0,r===undefined&&(r="utf8")):(r=i,i=undefined);else throw new Error("Buffer.write(string, encoding, offset[, length]) is no longer supported");if(u=this.length-t,(i===undefined||i>u)&&(i=u),n.length>0&&(i<0||t<0)||t>this.length)throw new RangeError("Attempt to write outside buffer bounds");for(r||(r="utf8"),f=!1;;)switch(r){case"hex":return kt(this,n,t,i);case"utf8":case"utf-8":return dt(this,n,t,i);case"ascii":return ut(this,n,t,i);case"latin1":case"binary":return gt(this,n,t,i);case"base64":return ni(this,n,t,i);case"ucs2":case"ucs-2":case"utf16le":case"utf-16le":return ti(this,n,t,i);default:if(f)throw new TypeError("Unknown encoding: "+r);r=(""+r).toLowerCase();f=!0}};r.prototype.toJSON=function(){return{type:"Buffer",data:Array.prototype.slice.call(this._arr||this,0)}};k=4096;r.prototype.slice=function(n,t){var i=this.length,u,e,f;if(n=~~n,t=t===undefined?i:~~t,n<0?(n+=i,n<0&&(n=0)):n>i&&(n=i),t<0?(t+=i,t<0&&(t=0)):t>i&&(t=i),t<n&&(t=n),r.TYPED_ARRAY_SUPPORT)u=this.subarray(n,t),u.__proto__=r.prototype;else for(e=t-n,u=new r(e,undefined),f=0;f<e;++f)u[f]=this[f+n];return u};r.prototype.readUIntLE=function(n,t,i){n=n|0;t=t|0;i||u(n,t,this.length);for(var r=this[n],f=1,e=0;++e<t&&(f*=256);)r+=this[n+e]*f;return r};r.prototype.readUIntBE=function(n,t,i){n=n|0;t=t|0;i||u(n,t,this.length);for(var r=this[n+--t],f=1;t>0&&(f*=256);)r+=this[n+--t]*f;return r};r.prototype.readUInt8=function(n,t){return t||u(n,1,this.length),this[n]};r.prototype.readUInt16LE=function(n,t){return t||u(n,2,this.length),this[n]|this[n+1]<<8};r.prototype.readUInt16BE=function(n,t){return t||u(n,2,this.length),this[n]<<8|this[n+1]};r.prototype.readUInt32LE=function(n,t){return t||u(n,4,this.length),(this[n]|this[n+1]<<8|this[n+2]<<16)+this[n+3]*16777216};r.prototype.readUInt32BE=function(n,t){return t||u(n,4,this.length),this[n]*16777216+(this[n+1]<<16|this[n+2]<<8|this[n+3])};r.prototype.readIntLE=function(n,t,i){n=n|0;t=t|0;i||u(n,t,this.length);for(var r=this[n],f=1,e=0;++e<t&&(f*=256);)r+=this[n+e]*f;return f*=128,r>=f&&(r-=Math.pow(2,8*t)),r};r.prototype.readIntBE=function(n,t,i){n=n|0;t=t|0;i||u(n,t,this.length);for(var e=t,r=1,f=this[n+--e];e>0&&(r*=256);)f+=this[n+--e]*r;return r*=128,f>=r&&(f-=Math.pow(2,8*t)),f};r.prototype.readInt8=function(n,t){return(t||u(n,1,this.length),!(this[n]&128))?this[n]:(256-this[n])*-1};r.prototype.readInt16LE=function(n,t){t||u(n,2,this.length);var i=this[n]|this[n+1]<<8;return i&32768?i|4294901760:i};r.prototype.readInt16BE=function(n,t){t||u(n,2,this.length);var i=this[n+1]|this[n]<<8;return i&32768?i|4294901760:i};r.prototype.readInt32LE=function(n,t){return t||u(n,4,this.length),this[n]|this[n+1]<<8|this[n+2]<<16|this[n+3]<<24};r.prototype.readInt32BE=function(n,t){return t||u(n,4,this.length),this[n]<<24|this[n+1]<<16|this[n+2]<<8|this[n+3]};r.prototype.readFloatLE=function(n,t){return t||u(n,4,this.length),s.read(this,n,!0,23,4)};r.prototype.readFloatBE=function(n,t){return t||u(n,4,this.length),s.read(this,n,!1,23,4)};r.prototype.readDoubleLE=function(n,t){return t||u(n,8,this.length),s.read(this,n,!0,52,8)};r.prototype.readDoubleBE=function(n,t){return t||u(n,8,this.length),s.read(this,n,!1,52,8)};r.prototype.writeUIntLE=function(n,t,i,r){var o,u,e;for(n=+n,t=t|0,i=i|0,r||(o=Math.pow(2,8*i)-1,f(this,n,t,i,o,0)),u=1,e=0,this[t]=n&255;++e<i&&(u*=256);)this[t+e]=n/u&255;return t+i};r.prototype.writeUIntBE=function(n,t,i,r){var o,u,e;for(n=+n,t=t|0,i=i|0,r||(o=Math.pow(2,8*i)-1,f(this,n,t,i,o,0)),u=i-1,e=1,this[t+u]=n&255;--u>=0&&(e*=256);)this[t+u]=n/e&255;return t+i};r.prototype.writeUInt8=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,1,255,0),r.TYPED_ARRAY_SUPPORT||(n=Math.floor(n)),this[t]=n&255,t+1};r.prototype.writeUInt16LE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,2,65535,0),r.TYPED_ARRAY_SUPPORT?(this[t]=n&255,this[t+1]=n>>>8):c(this,n,t,!0),t+2};r.prototype.writeUInt16BE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,2,65535,0),r.TYPED_ARRAY_SUPPORT?(this[t]=n>>>8,this[t+1]=n&255):c(this,n,t,!1),t+2};r.prototype.writeUInt32LE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,4,4294967295,0),r.TYPED_ARRAY_SUPPORT?(this[t+3]=n>>>24,this[t+2]=n>>>16,this[t+1]=n>>>8,this[t]=n&255):l(this,n,t,!0),t+4};r.prototype.writeUInt32BE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,4,4294967295,0),r.TYPED_ARRAY_SUPPORT?(this[t]=n>>>24,this[t+1]=n>>>16,this[t+2]=n>>>8,this[t+3]=n&255):l(this,n,t,!1),t+4};r.prototype.writeIntLE=function(n,t,i,r){var u;n=+n;t=t|0;r||(u=Math.pow(2,8*i-1),f(this,n,t,i,u-1,-u));var e=0,s=1,o=0;for(this[t]=n&255;++e<i&&(s*=256);)n<0&&o===0&&this[t+e-1]!==0&&(o=1),this[t+e]=(n/s>>0)-o&255;return t+i};r.prototype.writeIntBE=function(n,t,i,r){var e;n=+n;t=t|0;r||(e=Math.pow(2,8*i-1),f(this,n,t,i,e-1,-e));var u=i-1,s=1,o=0;for(this[t+u]=n&255;--u>=0&&(s*=256);)n<0&&o===0&&this[t+u+1]!==0&&(o=1),this[t+u]=(n/s>>0)-o&255;return t+i};r.prototype.writeInt8=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,1,127,-128),r.TYPED_ARRAY_SUPPORT||(n=Math.floor(n)),n<0&&(n=255+n+1),this[t]=n&255,t+1};r.prototype.writeInt16LE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,2,32767,-32768),r.TYPED_ARRAY_SUPPORT?(this[t]=n&255,this[t+1]=n>>>8):c(this,n,t,!0),t+2};r.prototype.writeInt16BE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,2,32767,-32768),r.TYPED_ARRAY_SUPPORT?(this[t]=n>>>8,this[t+1]=n&255):c(this,n,t,!1),t+2};r.prototype.writeInt32LE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,4,2147483647,-2147483648),r.TYPED_ARRAY_SUPPORT?(this[t]=n&255,this[t+1]=n>>>8,this[t+2]=n>>>16,this[t+3]=n>>>24):l(this,n,t,!0),t+4};r.prototype.writeInt32BE=function(n,t,i){return n=+n,t=t|0,i||f(this,n,t,4,2147483647,-2147483648),n<0&&(n=4294967295+n+1),r.TYPED_ARRAY_SUPPORT?(this[t]=n>>>24,this[t+1]=n>>>16,this[t+2]=n>>>8,this[t+3]=n&255):l(this,n,t,!1),t+4};r.prototype.writeFloatLE=function(n,t,i){return ot(this,n,t,!0,i)};r.prototype.writeFloatBE=function(n,t,i){return ot(this,n,t,!1,i)};r.prototype.writeDoubleLE=function(n,t,i){return st(this,n,t,!0,i)};r.prototype.writeDoubleBE=function(n,t,i){return st(this,n,t,!1,i)};r.prototype.copy=function(n,t,i,u){if((i||(i=0),u||u===0||(u=this.length),t>=n.length&&(t=n.length),t||(t=0),u>0&&u<i&&(u=i),u===i)||n.length===0||this.length===0)return 0;if(t<0)throw new RangeError("targetStart out of bounds");if(i<0||i>=this.length)throw new RangeError("sourceStart out of bounds");if(u<0)throw new RangeError("sourceEnd out of bounds");u>this.length&&(u=this.length);n.length-t<u-i&&(u=n.length-t+i);var e=u-i,f;if(this===n&&i<t&&t<u)for(f=e-1;f>=0;--f)n[f+t]=this[f+i];else if(e<1e3||!r.TYPED_ARRAY_SUPPORT)for(f=0;f<e;++f)n[f+t]=this[f+i];else Uint8Array.prototype.set.call(n,this.subarray(i,i+e),t);return e};r.prototype.fill=function(n,t,i,u){var e,f,o,s;if(typeof n=="string"){if(typeof t=="string"?(u=t,t=0,i=this.length):typeof i=="string"&&(u=i,i=this.length),n.length===1&&(e=n.charCodeAt(0),e<256&&(n=e)),u!==undefined&&typeof u!="string")throw new TypeError("encoding must be a string");if(typeof u=="string"&&!r.isEncoding(u))throw new TypeError("Unknown encoding: "+u);}else typeof n=="number"&&(n=n&255);if(t<0||this.length<t||this.length<i)throw new RangeError("Out of range index");if(i<=t)return this;if(t=t>>>0,i=i===undefined?this.length:i>>>0,n||(n=0),typeof n=="number")for(f=t;f<i;++f)this[f]=n;else for(o=r.isBuffer(n)?n:a(new r(n,u).toString()),s=o.length,f=0;f<i-t;++f)this[f+t]=o[f%s];return this};ht=/[^+\/0-9A-Za-z-_]/g}).call(this,i(161))},function(n){var t=function(){return this}();try{t=t||new Function("return this")()}catch(i){typeof window=="object"&&(t=window)}n.exports=t},function(n,t){"use strict";function o(n){var i=n.length,t,r;if(i%4>0)throw new Error("Invalid string. Length must be a multiple of 4");return t=n.indexOf("="),t===-1&&(t=i),r=t===i?0:4-t%4,[t,r]}function h(n){var t=o(n),r=t[0],i=t[1];return(r+i)*3/4-i}function c(n,t,i){return(t+i)*3/4-i}function l(n){for(var r,l=o(n),h=l[0],e=l[1],u=new s(c(n,h,e)),f=0,a=e>0?h-4:h,t=0;t<a;t+=4)r=i[n.charCodeAt(t)]<<18|i[n.charCodeAt(t+1)]<<12|i[n.charCodeAt(t+2)]<<6|i[n.charCodeAt(t+3)],u[f++]=r>>16&255,u[f++]=r>>8&255,u[f++]=r&255;return e===2&&(r=i[n.charCodeAt(t)]<<2|i[n.charCodeAt(t+1)]>>4,u[f++]=r&255),e===1&&(r=i[n.charCodeAt(t)]<<10|i[n.charCodeAt(t+1)]<<4|i[n.charCodeAt(t+2)]>>2,u[f++]=r>>8&255,u[f++]=r&255),u}function a(n){return r[n>>18&63]+r[n>>12&63]+r[n>>6&63]+r[n&63]}function v(n,t,i){for(var u,f=[],r=t;r<i;r+=3)u=(n[r]<<16&16711680)+(n[r+1]<<8&65280)+(n[r+2]&255),f.push(a(u));return f.join("")}function y(n){for(var t,i=n.length,e=i%3,f=[],o=16383,u=0,s=i-e;u<s;u+=o)f.push(v(n,u,u+o>s?s:u+o));return e===1?(t=n[i-1],f.push(r[t>>2]+r[t<<4&63]+"==")):e===2&&(t=(n[i-2]<<8)+n[i-1],f.push(r[t>>10]+r[t>>4&63]+r[t<<2&63]+"=")),f.join("")}var u,e;t.byteLength=h;t.toByteArray=l;t.fromByteArray=y;var r=[],i=[],s=typeof Uint8Array!="undefined"?Uint8Array:Array,f="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(u=0,e=f.length;u<e;++u)r[u]=f[u],i[f.charCodeAt(u)]=u;i["-".charCodeAt(0)]=62;i["_".charCodeAt(0)]=63},function(n,t){t.read=function(n,t,i,r,u){var f,o,l=u*8-r-1,a=(1<<l)-1,v=a>>1,e=-7,s=i?u-1:0,c=i?-1:1,h=n[t+s];for(s+=c,f=h&(1<<-e)-1,h>>=-e,e+=l;e>0;f=f*256+n[t+s],s+=c,e-=8);for(o=f&(1<<-e)-1,f>>=-e,e+=r;e>0;o=o*256+n[t+s],s+=c,e-=8);if(f===0)f=1-v;else{if(f===a)return o?NaN:(h?-1:1)*Infinity;o=o+Math.pow(2,r);f=f-v}return(h?-1:1)*o*Math.pow(2,f-r)};t.write=function(n,t,i,r,u,f){var e,o,s,l=f*8-u-1,a=(1<<l)-1,h=a>>1,y=u===23?Math.pow(2,-24)-Math.pow(2,-77):0,c=r?0:f-1,v=r?1:-1,p=t<0||t===0&&1/t<0?1:0;for(t=Math.abs(t),isNaN(t)||t===Infinity?(o=isNaN(t)?1:0,e=a):(e=Math.floor(Math.log(t)/Math.LN2),t*(s=Math.pow(2,-e))<1&&(e--,s*=2),t+=e+h>=1?y/s:y*Math.pow(2,1-h),t*s>=2&&(e++,s/=2),e+h>=a?(o=0,e=a):e+h>=1?(o=(t*s-1)*Math.pow(2,u),e=e+h):(o=t*Math.pow(2,h-1)*Math.pow(2,u),e=0));u>=8;n[i+c]=o&255,c+=v,o/=256,u-=8);for(e=e<<u|o,l+=u;l>0;n[i+c]=e&255,c+=v,e/=256,l-=8);n[i+c-v]|=p*128}},function(n){var t={}.toString;n.exports=Array.isArray||function(n){return t.call(n)=="[object Array]"}},function(){},function(){},function(){},function(n,t,i){"use strict";var r,u,f;Object.defineProperty(t,"__esModule",{value:!0});r=i(4);u=function(){function n(n,t){var i=this;this.privBuffers=[];this.privReplayOffset=0;this.privLastShrinkOffset=0;this.privBufferStartOffset=0;this.privBufferSerial=0;this.privBufferedBytes=0;this.privReplay=!1;this.privLastChunkAcquiredTime=0;this.id=function(){return i.privAudioNode.id()};this.privAudioNode=n;this.privBytesPerSecond=t}return n.prototype.read=function(){var i=this,e,t,n,u;if(!!this.privReplay&&this.privBuffers.length!==0){for(e=this.privReplayOffset-this.privBufferStartOffset,t=Math.round(e*this.privBytesPerSecond*1e-7),0!=t%2&&t++,n=0;n<this.privBuffers.length&&t>=this.privBuffers[n].chunk.buffer.byteLength;)t-=this.privBuffers[n++].chunk.buffer.byteLength;return u=this.privBuffers[n].chunk.buffer.slice(t),this.privReplayOffset+=u.byteLength/this.privBytesPerSecond*1e7,n===this.privBuffers.length-1&&(this.privReplay=!1),r.PromiseHelper.fromResult({buffer:u,isEnd:!1,timeReceived:this.privBuffers[n].chunk.timeReceived})}return this.privAudioNode.read().onSuccessContinueWith(function(n){return n&&n.buffer&&(i.privBuffers.push(new f(n,i.privBufferSerial++,i.privBufferedBytes)),i.privBufferedBytes+=n.buffer.byteLength),n})},n.prototype.detach=function(){this.privAudioNode.detach();this.privBuffers=undefined},n.prototype.replay=function(){this.privBuffers&&0!==this.privBuffers.length&&(this.privReplay=!0,this.privReplayOffset=this.privLastShrinkOffset)},n.prototype.shrinkBuffers=function(n){if(this.privBuffers!==undefined){this.privLastShrinkOffset=n;for(var r=n-this.privBufferStartOffset,i=Math.round(r*this.privBytesPerSecond*1e-7),t=0;t<this.privBuffers.length&&i>=this.privBuffers[t].chunk.buffer.byteLength;)i-=this.privBuffers[t++].chunk.buffer.byteLength;this.privBufferStartOffset=Math.round(n-i/this.privBytesPerSecond*1e7);this.privBuffers=this.privBuffers.slice(t)}},n.prototype.findTimeAtOffset=function(n){var t,i;if(n<this.privBufferStartOffset||this.privBuffers===undefined)return 0;for(t=0,i=this.privBuffers;t<i.length;t++){var r=i[t],u=r.byteOffset/this.privBytesPerSecond*1e7,f=u+r.chunk.buffer.byteLength/this.privBytesPerSecond*1e7;if(n>=u&&n<=f)return r.chunk.timeReceived}return 0},n}();t.ReplayableAudioNode=u;f=function(){function n(n,t,i){this.chunk=n;this.serial=t;this.byteOffset=i}return n}()},function(n,t,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=i(30),u=function(){function n(n,t,i,r){this.privProxyHostName=n;this.privProxyPort=t;this.privProxyUserName=i;this.privProxyPassword=r}return n.fromParameters=function(t){return new n(t.getProperty(r.PropertyId.SpeechServiceConnection_ProxyHostName),parseInt(t.getProperty(r.PropertyId.SpeechServiceConnection_ProxyPort),10),t.getProperty(r.PropertyId.SpeechServiceConnection_ProxyUserName),t.getProperty(r.PropertyId.SpeechServiceConnection_ProxyPassword))},n.fromRecognizerConfig=function(n){return this.fromParameters(n.parameters)},Object.defineProperty(n.prototype,"HostName",{get:function(){return this.privProxyHostName},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"Port",{get:function(){return this.privProxyPort},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"UserName",{get:function(){return this.privProxyUserName},enumerable:!0,configurable:!0}),Object.defineProperty(n.prototype,"Password",{get:function(){return this.privProxyPassword},enumerable:!0,configurable:!0}),n}();t.ProxyInfo=u},function(n,t,i){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=i(4),u=function(){function n(n){this.privId=n?n:r.createNoDashGuid()}return n.prototype.id=function(){return this.privId},n.prototype.write=function(){},n.prototype.close=function(){},Object.defineProperty(n.prototype,"format",{set:function(){},enumerable:!0,configurable:!0}),n}();t.SpeakerAudioDestination=u}])
   recorded_at: Tue, 20 Jul 2021 03:14:35 GMT
+- request:
+    method: post
+    uri: https://www.bing.com/fd/ls/lsp.aspx
+    body:
+      encoding: UTF-8
+      string: <ClientInstRequest><Events><E><T>Event.ClientInst</T><IG>19420F91FCDC46D59072E88A21B2ED4F</IG><TS>1626790266472</TS><D><![CDATA[{id:3938,P:"2:bs,3:bs,4:bs,5:bt,7:cg,6:c8,8:ch,9:cp,10:cq,11:cu,12:s5,13:s5,14:s5,15:xk,16:xk,17:xk",S:"nav:0",v:1.1,T:"CI.Perf",FID:"CI",Name:"PerfV2"}]]></D></E></Events><STS>1626790266472</STS></ClientInstRequest>
+    headers:
+      Host:
+      - www.bing.com
+      Connection:
+      - close
+      Content-Length:
+      - '344'
+      Sec-Ch-Ua:
+      - ''
+      Sec-Ch-Ua-Mobile:
+      - "?0"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) HeadlessChrome/91.0.4472.164 Safari/537.36
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Accept:
+      - "*/*"
+      Origin:
+      - https://www.bing.com
+      Sec-Fetch-Site:
+      - same-origin
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      Referer:
+      - https://www.bing.com/search?q=github&toWww=1&redig=6516F98704DC411196151BE52B96C4B4
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US
+      Cookie:
+      - MUID=0065EA5F089E6DF50F17FA25094B6C6D; _EDGE_S=F=1&SID=2856853D7DFE6133130995477C2B6079;
+        _EDGE_V=1; MUIDB=0065EA5F089E6DF50F17FA25094B6C6D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=8F77F6A28F7247E7B88CE51F01DE0FE1&dmnchg=1;
+        SRCHUSR=DOB=20210720; _SS=SID=2856853D7DFE6133130995477C2B6079; SRCHHPGUSR=SRCHLANG=en&HV=1626790266
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 79190080EBE245EC9B38E979F2BD368C Ref B: CPQ02EDGE0206 Ref C: 2021-07-20T14:11:08Z'
+      Date:
+      - Tue, 20 Jul 2021 14:11:08 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 20 Jul 2021 14:11:08 GMT
+- request:
+    method: get
+    uri: https://www.bing.com/fd/ls/l?DA=BN2B&DATA=%7B%22pp%22:%7B%22S%22:%22L%22,%22FC%22:353,%22BC%22:353,%22SE%22:-1,%22TC%22:-1,%22H%22:597,%22BP%22:612,%22CT%22:614,%22IL%22:2%7D,%22ad%22:%5B-1,-1,785,585,1084,1618,0%5D,%22net%22:%22undefined%22%7D&IG=19420F91FCDC46D59072E88A21B2ED4F&P=SERP&Type=Event.CPT
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Host:
+      - www.bing.com
+      Connection:
+      - close
+      Sec-Ch-Ua:
+      - ''
+      Sec-Ch-Ua-Mobile:
+      - "?0"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) HeadlessChrome/91.0.4472.164 Safari/537.36
+      Accept:
+      - image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+      Sec-Fetch-Site:
+      - same-origin
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - image
+      Referer:
+      - https://www.bing.com/search?q=github&toWww=1&redig=6516F98704DC411196151BE52B96C4B4
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US
+      Cookie:
+      - MUID=0065EA5F089E6DF50F17FA25094B6C6D; _EDGE_S=F=1&SID=2856853D7DFE6133130995477C2B6079;
+        _EDGE_V=1; MUIDB=0065EA5F089E6DF50F17FA25094B6C6D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=8F77F6A28F7247E7B88CE51F01DE0FE1&dmnchg=1;
+        SRCHUSR=DOB=20210720; _SS=SID=2856853D7DFE6133130995477C2B6079; SRCHHPGUSR=SRCHLANG=en&HV=1626790268
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: BA4EE9ECC9344A308FE7AEF35F414B0D Ref B: CPQ02EDGE0214 Ref C: 2021-07-20T14:11:08Z'
+      Date:
+      - Tue, 20 Jul 2021 14:11:08 GMT
+      Connection:
+      - close
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 20 Jul 2021 14:11:08 GMT
+- request:
+    method: get
+    uri: https://www.bing.com/fd/ls/l?DATA=%5B%7B%22T%22:%22CI.Init%22,%22TS%22:1626790266479,%22Name%22:%22Base%22,%22FID%22:%22CI%22%7D,%7B%22width%22:%22800%22,%22T%22:%22CI.Info%22,%22TS%22:1626790266479,%22Name%22:%22NOTP%22,%22FID%22:%22BRW%22%7D,%7B%22height%22:%22585%22,%22T%22:%22CI.Info%22,%22TS%22:1626790266481,%22Name%22:%22S%22,%22FID%22:%22BRH%22%7D,%7B%22RawDPR%22:%222%22,%22T%22:%22CI.Info%22,%22TS%22:1626790266485,%22Name%22:%222.00%22,%22FID%22:%22DPR%22%7D,%7B%22T%22:%22CI.Info%22,%22TS%22:1626790266487,%22Name%22:%220%22,%22FID%22:%22DM%22%7D%5D&IG=19420F91FCDC46D59072E88A21B2ED4F&TYPE=Event.ClientInst
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Host:
+      - www.bing.com
+      Connection:
+      - close
+      Sec-Ch-Ua:
+      - ''
+      Cache-Control:
+      - max-age=0
+      Sec-Ch-Ua-Mobile:
+      - "?0"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) HeadlessChrome/91.0.4472.164 Safari/537.36
+      Accept:
+      - "*/*"
+      Sec-Fetch-Site:
+      - same-origin
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      Referer:
+      - https://www.bing.com/search?q=github&toWww=1&redig=6516F98704DC411196151BE52B96C4B4
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US
+      Cookie:
+      - MUID=0065EA5F089E6DF50F17FA25094B6C6D; _EDGE_S=F=1&SID=2856853D7DFE6133130995477C2B6079;
+        _EDGE_V=1; MUIDB=0065EA5F089E6DF50F17FA25094B6C6D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=8F77F6A28F7247E7B88CE51F01DE0FE1&dmnchg=1;
+        SRCHUSR=DOB=20210720; _SS=SID=2856853D7DFE6133130995477C2B6079; SRCHHPGUSR=SRCHLANG=en
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 6DFE76C8ADE74F48B8FD23DEDADA4095 Ref B: CPQ02EDGE0411 Ref C: 2021-07-20T14:11:08Z'
+      Date:
+      - Tue, 20 Jul 2021 14:11:08 GMT
+      Connection:
+      - close
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 20 Jul 2021 14:11:08 GMT
+- request:
+    method: post
+    uri: https://www.bing.com/fd/ls/lsp.aspx
+    body:
+      encoding: UTF-8
+      string: <ClientInstRequest><Events><E><T>Event.ClientInst</T><IG>19420F91FCDC46D59072E88A21B2ED4F</IG><TS>1626790268068</TS><D><![CDATA[{id:5899,P:"2:mk,3:mk,4:mk,5:mo,7:mu,6:mo,8:mu,9:no,10:14m,11:ny,12:14o,13:14p,14:14p,15:152,16:152,17:152",S:"nav:0",v:1.1,T:"CI.Perf",FID:"CI",Name:"PerfV2"}]]></D></E></Events><STS>1626790268068</STS></ClientInstRequest>
+    headers:
+      Host:
+      - www.bing.com
+      Connection:
+      - close
+      Content-Length:
+      - '351'
+      Sec-Ch-Ua:
+      - ''
+      Sec-Ch-Ua-Mobile:
+      - "?0"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) HeadlessChrome/91.0.4472.164 Safari/537.36
+      Content-Type:
+      - text/plain;charset=UTF-8
+      Accept:
+      - "*/*"
+      Origin:
+      - https://www.bing.com
+      Sec-Fetch-Site:
+      - same-origin
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      Referer:
+      - https://www.bing.com/search?q=github&toWww=1&redig=6516F98704DC411196151BE52B96C4B4
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US
+      Cookie:
+      - MUID=0065EA5F089E6DF50F17FA25094B6C6D; _EDGE_S=F=1&SID=2856853D7DFE6133130995477C2B6079;
+        _EDGE_V=1; MUIDB=0065EA5F089E6DF50F17FA25094B6C6D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=8F77F6A28F7247E7B88CE51F01DE0FE1&dmnchg=1;
+        SRCHUSR=DOB=20210720; _SS=SID=2856853D7DFE6133130995477C2B6079; SRCHHPGUSR=SRCHLANG=en&HV=1626790268
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 9A4779736BA74BB3BAF3B1F7DA0EDC2C Ref B: CPQ02EDGE0522 Ref C: 2021-07-20T14:11:09Z'
+      Date:
+      - Tue, 20 Jul 2021 14:11:09 GMT
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 20 Jul 2021 14:11:09 GMT
+- request:
+    method: get
+    uri: https://www.bing.com/fd/ls/l?DATA=%5B%7B%22T%22:%22CI.Init%22,%22TS%22:1626790268072,%22Name%22:%22Base%22,%22FID%22:%22CI%22%7D,%7B%22width%22:%22800%22,%22T%22:%22CI.Info%22,%22TS%22:1626790268073,%22Name%22:%22NOTP%22,%22FID%22:%22BRW%22%7D,%7B%22height%22:%22585%22,%22T%22:%22CI.Info%22,%22TS%22:1626790268076,%22Name%22:%22S%22,%22FID%22:%22BRH%22%7D,%7B%22RawDPR%22:%222%22,%22T%22:%22CI.Info%22,%22TS%22:1626790268079,%22Name%22:%222.00%22,%22FID%22:%22DPR%22%7D,%7B%22T%22:%22CI.Info%22,%22TS%22:1626790268082,%22Name%22:%220%22,%22FID%22:%22DM%22%7D%5D&IG=19420F91FCDC46D59072E88A21B2ED4F&TYPE=Event.ClientInst
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Host:
+      - www.bing.com
+      Connection:
+      - close
+      Sec-Ch-Ua:
+      - ''
+      Cache-Control:
+      - max-age=0
+      Sec-Ch-Ua-Mobile:
+      - "?0"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) HeadlessChrome/91.0.4472.164 Safari/537.36
+      Accept:
+      - "*/*"
+      Sec-Fetch-Site:
+      - same-origin
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - empty
+      Referer:
+      - https://www.bing.com/search?q=github&toWww=1&redig=6516F98704DC411196151BE52B96C4B4
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US
+      Cookie:
+      - MUID=0065EA5F089E6DF50F17FA25094B6C6D; _EDGE_S=F=1&SID=2856853D7DFE6133130995477C2B6079;
+        _EDGE_V=1; MUIDB=0065EA5F089E6DF50F17FA25094B6C6D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=8F77F6A28F7247E7B88CE51F01DE0FE1&dmnchg=1;
+        SRCHUSR=DOB=20210720; _SS=SID=2856853D7DFE6133130995477C2B6079; SRCHHPGUSR=SRCHLANG=en
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 343D1FD287A148C1A0FECA814E234F31 Ref B: CPQ02EDGE0206 Ref C: 2021-07-20T14:11:10Z'
+      Date:
+      - Tue, 20 Jul 2021 14:11:10 GMT
+      Connection:
+      - close
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 20 Jul 2021 14:11:10 GMT
+- request:
+    method: get
+    uri: https://www.bing.com/fd/ls/l?DA=BN2B&DATA=%7B%22pp%22:%7B%22S%22:%22L%22,%22FC%22:137,%22BC%22:137,%22SE%22:-1,%22TC%22:-1,%22H%22:264,%22BP%22:274,%22CT%22:275,%22IL%22:2%7D,%22ad%22:%5B-1,-1,785,585,1084,1618,0%5D,%22net%22:%22undefined%22%7D&IG=19420F91FCDC46D59072E88A21B2ED4F&P=SERP&Type=Event.CPT
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Host:
+      - www.bing.com
+      Connection:
+      - close
+      Sec-Ch-Ua:
+      - ''
+      Sec-Ch-Ua-Mobile:
+      - "?0"
+      User-Agent:
+      - Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML,
+        like Gecko) HeadlessChrome/91.0.4472.164 Safari/537.36
+      Accept:
+      - image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+      Sec-Fetch-Site:
+      - same-origin
+      Sec-Fetch-Mode:
+      - no-cors
+      Sec-Fetch-Dest:
+      - image
+      Referer:
+      - https://www.bing.com/search?q=github&toWww=1&redig=6516F98704DC411196151BE52B96C4B4
+      Accept-Encoding:
+      - ''
+      Accept-Language:
+      - en-US
+      Cookie:
+      - MUID=0065EA5F089E6DF50F17FA25094B6C6D; _EDGE_S=F=1&SID=2856853D7DFE6133130995477C2B6079;
+        _EDGE_V=1; MUIDB=0065EA5F089E6DF50F17FA25094B6C6D; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=8F77F6A28F7247E7B88CE51F01DE0FE1&dmnchg=1;
+        SRCHUSR=DOB=20210720; _SS=SID=2856853D7DFE6133130995477C2B6079; SRCHHPGUSR=SRCHLANG=en&HV=1626790270
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Cache:
+      - CONFIG_NOCACHE
+      X-Msedge-Ref:
+      - 'Ref A: 18E31F6448A144B0B08CD65F44720A0F Ref B: CPQ02EDGE0907 Ref C: 2021-07-20T14:11:10Z'
+      Date:
+      - Tue, 20 Jul 2021 14:11:10 GMT
+      Connection:
+      - close
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Tue, 20 Jul 2021 14:11:10 GMT
 recorded_with: VCR 6.0.0

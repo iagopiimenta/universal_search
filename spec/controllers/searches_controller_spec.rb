@@ -13,6 +13,11 @@ RSpec.describe SearchesController do
   describe 'GET show with query' do
     let(:search_results) { assigns(:search_results) }
 
+    before do
+      Capybara.default_driver = :selenium_chrome_headless_billy
+      Capybara.javascript_driver = :selenium_chrome_headless_billy
+    end
+
     vcr_options = { cassette_name: 'both_github_search_result' }
     it 'returns a 200', vcr: vcr_options do
       get :show, params: { text: 'github', engine: 'both' }
